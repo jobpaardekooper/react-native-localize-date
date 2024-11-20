@@ -1,6 +1,6 @@
 {
   "name": "react-native-localize-date",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "React Native date localization using correct platform specific preferences",
   "main": "lib/index",
   "module": "lib/index",
