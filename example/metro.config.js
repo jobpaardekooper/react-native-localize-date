@@ -1,3 +1,4 @@
+// Taken from https://www.renanmav.com/blog/getting-started-with-nitro#what-are-the-benefits
 const { getDefaultConfig, mergeConfig } = require('@react-native/metro-config')
 const path = require('path')
 const escape = require('escape-string-regexp')
