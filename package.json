@@ -54,7 +54,6 @@
   },
   "devDependencies": {
     "@react-native/eslint-config": "^0.75.2",
-    "@release-it/bumper": "^6.0.1",
     "@release-it/conventional-changelog": "^8.0.1",
     "@types/jest": "^29.5.12",
     "@types/react": "^18.3.4",
@@ -101,18 +100,6 @@
       "release": true
     },
     "plugins": {
-      "@release-it/bumper": {
-        "out": [
-          {
-            "file": "package.json",
-            "path": "version"
-          },
-          {
-            "file": "example/package.json",
-            "path": "version"
-          }
-        ]
-      },
       "@release-it/conventional-changelog": {
         "preset": {
           "name": "conventionalcommits",
