@@ -13,6 +13,13 @@ func mapDateStyleToDateFormatterStyle(_ style: DateStyle) -> DateFormatter.Style
     }
 }
 
+func getPreferredLocale() -> Locale {
+    guard let preferredIdentifier = Locale.preferredLanguages.first else {
+        return Locale.current
+    }
+    return Locale(identifier: preferredIdentifier)
+}
+
 class HybridRNLocalizeDate: HybridRNLocalizeDateSpec {
     public var hybridContext = margelo.nitro.HybridContext()
     public var memorySize: Int {
@@ -24,6 +31,7 @@ class HybridRNLocalizeDate: HybridRNLocalizeDateSpec {
         let date = Date(timeIntervalSince1970: seconds)
 
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = getPreferredLocale()
         dateFormatter.dateStyle = mapDateStyleToDateFormatterStyle(dateStyle)
         dateFormatter.timeStyle = .none
 
@@ -35,6 +43,7 @@ class HybridRNLocalizeDate: HybridRNLocalizeDateSpec {
         let date = Date(timeIntervalSince1970: seconds)
 
         let dateFormatter = DateFormatter()
+        dateFormatter.locale = getPreferredLocale()
         dateFormatter.dateStyle = .none
         dateFormatter.timeStyle = mapDateStyleToDateFormatterStyle(timeStyle)
 
