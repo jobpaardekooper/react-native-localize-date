@@ -8,13 +8,14 @@ import type { HybridObject } from 'react-native-nitro-modules'
  * [iOS](https://developer.apple.com/documentation/foundation/dateformatter/style) and [Android](https://developer.android.com/reference/android/icu/text/DateFormat#:~:text=The%20exact%20result%20depends%20on%20the%20locale%2C%20but%20generally).
  */
 export enum DateStyle {
+    NONE,
     SHORT,
     MEDIUM,
     LONG,
     FULL,
 }
 
-export interface RNLocalizeDate extends HybridObject<{ ios: 'swift', android: 'kotlin' }> {
-    localizeTimeOnly(time: number, timeStyle: DateStyle): string
-    localizeDateOnly(time: number, dateStyle: DateStyle): string
+export interface RNLocalizeDateFormatter extends HybridObject<{ ios: 'swift', android: 'kotlin' }> {
+    initialize(defaultLocale: string, supportedLocales: string[], dateStyle: DateStyle, timeStyle: DateStyle): void
+    format(time: number): string
 }

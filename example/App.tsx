@@ -6,7 +6,7 @@ import {
   View,
 } from 'react-native';
 
-import { DateStyle, localizeDateTime } from 'react-native-localize-date';
+import { DateStyle, DateFormatter } from 'react-native-localize-date';
 
 type ExampleRowProps = {
   code: string
@@ -21,14 +21,24 @@ const ExampleRow = (props: ExampleRowProps) => {
 
 function App(): React.JSX.Element {
   const date = new Date();
+  const defaultLocale = 'en';
+  const supportedLocales = ['en', 'fr', 'de'];
+  const formatterShort = new DateFormatter(defaultLocale, supportedLocales, DateStyle.SHORT, DateStyle.SHORT);
+  const formatterMedium = new DateFormatter(defaultLocale, supportedLocales, DateStyle.MEDIUM, DateStyle.MEDIUM);
+  const formatterLong = new DateFormatter(defaultLocale, supportedLocales, DateStyle.LONG, DateStyle.LONG);
+  const formatterFull = new DateFormatter(defaultLocale, supportedLocales, DateStyle.FULL, DateStyle.FULL);
+  const formatterDateOnly = new DateFormatter(defaultLocale, supportedLocales, DateStyle.FULL, DateStyle.NONE);
+  const formatterTimeOnly = new DateFormatter(defaultLocale, supportedLocales, DateStyle.NONE, DateStyle.FULL);
 
   return (
     <SafeAreaView>
       <View style={styles.wrapper} >
-        <ExampleRow code="SHORT" output={localizeDateTime(date, DateStyle.SHORT, DateStyle.SHORT)} />
-        <ExampleRow code="MEDIUM" output={localizeDateTime(date, DateStyle.MEDIUM, DateStyle.MEDIUM)} />
-        <ExampleRow code="LONG" output={localizeDateTime(date, DateStyle.LONG, DateStyle.LONG)} />
-        <ExampleRow code="FULL" output={localizeDateTime(date, DateStyle.FULL, DateStyle.FULL)} />
+        <ExampleRow code="SHORT" output={formatterShort.format(date)} />
+        <ExampleRow code="MEDIUM" output={formatterMedium.format(date)} />
+        <ExampleRow code="LONG" output={formatterLong.format(date)} />
+        <ExampleRow code="FULL" output={formatterFull.format(date)} />
+        <ExampleRow code="Date Only" output={formatterDateOnly.format(date)} />
+        <ExampleRow code="Time Only" output={formatterTimeOnly.format(date)} />
       </View>
     </SafeAreaView>
   );

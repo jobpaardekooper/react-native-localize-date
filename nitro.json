@@ -8,9 +8,9 @@
     "androidCxxLibName": "NitroLocalizeDate"
   },
   "autolinking": {
-    "RNLocalizeDate": {
-      "swift": "HybridRNLocalizeDate",
-      "kotlin": "HybridRNLocalizeDate"
+    "RNLocalizeDateFormatter": {
+      "swift": "HybridRNLocalizeDateFormatter",
+      "kotlin": "HybridRNLocalizeDateFormatter"
     }
   },
   "ignorePaths": ["node_modules"]
