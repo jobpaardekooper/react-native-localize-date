@@ -1,5 +1,8 @@
 # React Native Localize Date
 
+![NPM Version](https://img.shields.io/npm/v/react-native-localize-date)
+![GitHub License](https://img.shields.io/github/license/jobpaardekooper/react-native-localize-date)
+
 This library allows you to localize date and time according to the device locale and additional platform-specific user settings, **providing a date localization experience that aligns with users' expectations from native apps**.
 
 The output format is platform-dependent and might, for example, even differ between various Android vendors. More information regarding the specifics can be found in the corresponding [iOS](https://developer.apple.com/documentation/foundation/dateformatter/1415241-localizedstring) and [Android](https://developer.android.com/reference/android/icu/text/DateFormat) documentation.
