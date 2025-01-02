@@ -1,7 +1,7 @@
 # React Native Localize Date
 
-![NPM Version](https://img.shields.io/npm/v/react-native-localize-date)
-![GitHub License](https://img.shields.io/github/license/jobpaardekooper/react-native-localize-date)
+[![NPM Version](https://img.shields.io/npm/v/react-native-localize-date)](https://www.npmjs.com/package/react-native-localize-date)
+[![GitHub License](https://img.shields.io/github/license/jobpaardekooper/react-native-localize-date)](https://github.com/jobpaardekooper/react-native-localize-date/blob/main/LICENSE.txt)
 
 This library allows you to localize date and time according to the device locale and additional platform-specific user settings, **providing a date localization experience that aligns with users' expectations from native apps**.
 
