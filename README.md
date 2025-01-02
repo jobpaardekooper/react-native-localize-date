@@ -7,13 +7,24 @@ This library allows you to localize date and time according to the device locale
 
 The output format is platform-dependent and might, for example, even differ between various Android vendors. More information regarding the specifics can be found in the corresponding [iOS](https://developer.apple.com/documentation/foundation/dateformatter/1415241-localizedstring) and [Android](https://developer.android.com/reference/android/icu/text/DateFormat) documentation.
 
+## Table of Contents
+
+- [Why is this library needed?](#why-is-this-library-needed)
+- [Installation](#installation)
+  - [Required additional iOS steps](#required-additional-ios-steps)
+- [Usage](#usage)
+- [API](#api)
+  - [`DateStyle`](#datestyle)
+  - [`new DateFormatter`](#new-dateformatterdefaultlocale-string-supportedlocales-string-datestyle-datestyle-timestyle-datestyle)
+  - [`DateFormatter.format`](#dateformatterformatdate-date)
+- [Running the example app](#running-the-example-app)
+- [Contributing](#contributing)
+
 ## Why is this library needed?
 
 Localizing date and time based only on a [BCP 47 language tag](https://www.techonthenet.com/js/language_tags.php) (for example, using [`react-native-localize`](https://github.com/zoontek/react-native-localize)) does not yield results as expected on native platforms. This is because the language tag is based on language and region settings, but iOS and Android both provide additional settings to control date and time formatting beyond language and region.
 
-> ### Example
->
-> On my iPhone with my personal settings, the language tag that an app will get is `en-US`. Using this tag with [`Intl.DateTimeFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) yields the following result as `MM/DD/YYYY`:
+> For example, on my iPhone with my personal settings, the language tag that an app will receive is `en-US`. Using this tag with [`Intl.DateTimeFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) yields the date format `MM/DD/YYYY`:
 >
 > ```js
 > Intl.DateTimeFormat('en-US').format(new Date())
@@ -43,7 +54,7 @@ iOS automatically determines the locale that will be used based on the locales t
 
 As an example, if your app supports English, French, and German with the fallback language set to English, you should add the following to the `info.plist`:
 
-```plist
+```xml
 <key>CFBundleDevelopmentRegion</key>
 <string>en</string>
 <key>CFBundleLocalizations</key>
@@ -112,7 +123,7 @@ A usage example can be found in the [Usage section](#usage).
 
 Returns a localized string for the provided date object according to the styles defined when constructing the formatter. A usage example can be found in the [Usage section](#usage).
 
-## Running the example
+## Running the example app
 
 There is an example app project located at [example/](example) which you can run as follows:
 
