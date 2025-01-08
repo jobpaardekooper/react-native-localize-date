@@ -11,7 +11,7 @@ The output format is platform-dependent and might, for example, even differ betw
 
 - [Why is this library needed?](#why-is-this-library-needed)
 - [Installation](#installation)
-  - [Required additional iOS setup setps](#required-additional-ios-setup-setps)
+  - [Required additional iOS setup steps](#required-additional-ios-setup-steps)
     - [Setup with Expo plugin](#setup-with-expo-plugin)
     - [Manual iOS plist steps](#manual-ios-plist-steps)
 - [Usage](#usage)
@@ -50,7 +50,7 @@ This library was created using [Nitro Modules](https://github.com/mrousavy/nitro
 
 The library works with both the new and old architectures. React Native version `0.75.x` and above is supported.
 
-### Required additional iOS setup setps
+### Required additional iOS setup steps
 
 You can use [the Expo plugin](#setup-with-expo-plugin) for this additional setup or do it [manually in a bare React Native project](#manual-ios-plist-steps).
 
@@ -147,7 +147,7 @@ Creates a DateFormatter with the options specified in the constructor.
 
 `supportedLocales` is the list of locales that your app supports. It should not be empty and at least the `defaultLocale` should be contained in this array.
 
-`defaultLocale` and `supportedLocales` are both only used on Android. On iOS, `info.plist` properties are automatically used. Please refer to the [iOS installation steps section](#required-additional-ios-setup-setps).
+`defaultLocale` and `supportedLocales` are both only used on Android. On iOS, `info.plist` properties are automatically used. Please refer to the [iOS installation steps section](#required-additional-ios-setup-steps).
 
 `dateStyle` and `timeStyle` can't both be `DateStyle.NONE` at the same time. (This will throw an error)
 
