@@ -12,10 +12,13 @@
 namespace margelo::nitro::localizedate { enum class DateStyle; }
 // Forward declaration of `HybridRNLocalizeDateFormatterSpec` to properly resolve imports.
 namespace margelo::nitro::localizedate { class HybridRNLocalizeDateFormatterSpec; }
+// Forward declaration of `StringHolder` to properly resolve imports.
+namespace margelo::nitro::localizedate { struct StringHolder; }
 
 // Include C++ defined types
 #include "DateStyle.hpp"
 #include "HybridRNLocalizeDateFormatterSpec.hpp"
+#include "StringHolder.hpp"
 #include <NitroModules/Result.hpp>
 #include <exception>
 #include <memory>

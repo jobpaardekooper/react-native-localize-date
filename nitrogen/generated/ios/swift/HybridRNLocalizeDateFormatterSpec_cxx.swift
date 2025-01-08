@@ -101,9 +101,9 @@ public class HybridRNLocalizeDateFormatterSpec_cxx {
 
   // Methods
   @inline(__always)
-  public func initialize(defaultLocale: std.string, supportedLocales: bridge.std__vector_std__string_, dateStyle: Int32, timeStyle: Int32) -> bridge.Result_void_ {
+  public func initialize(defaultLocale: std.string, supportedLocales: bridge.std__vector_StringHolder_, dateStyle: Int32, timeStyle: Int32) -> bridge.Result_void_ {
     do {
-      try self.__implementation.initialize(defaultLocale: String(defaultLocale), supportedLocales: supportedLocales.map({ __item in String(__item) }), dateStyle: margelo.nitro.localizedate.DateStyle(rawValue: dateStyle)!, timeStyle: margelo.nitro.localizedate.DateStyle(rawValue: timeStyle)!)
+      try self.__implementation.initialize(defaultLocale: String(defaultLocale), supportedLocales: supportedLocales.map({ __item in __item }), dateStyle: margelo.nitro.localizedate.DateStyle(rawValue: dateStyle)!, timeStyle: margelo.nitro.localizedate.DateStyle(rawValue: timeStyle)!)
       return bridge.create_Result_void_()
     } catch (let __error) {
       let __exceptionPtr = __error.toCpp()

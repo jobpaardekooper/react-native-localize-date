@@ -28,7 +28,7 @@ export class DateFormatter {
         }
 
         this.formatter = NitroModules.createHybridObject<RNLocalizeDateFormatter>('RNLocalizeDateFormatter')
-        this.formatter.initialize(defaultLocale, supportedLocales, dateStyle, timeStyle)
+        this.formatter.initialize(defaultLocale, supportedLocales.map((value) => ({ value })), dateStyle, timeStyle)
     }
 
     /**

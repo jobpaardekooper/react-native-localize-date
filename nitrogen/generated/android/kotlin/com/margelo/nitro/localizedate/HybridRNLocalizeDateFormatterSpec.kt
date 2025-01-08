@@ -43,7 +43,7 @@ abstract class HybridRNLocalizeDateFormatterSpec: HybridObject() {
   // Methods
   @DoNotStrip
   @Keep
-  abstract fun initialize(defaultLocale: String, supportedLocales: Array<String>, dateStyle: DateStyle, timeStyle: DateStyle): Unit
+  abstract fun initialize(defaultLocale: String, supportedLocales: Array<StringHolder>, dateStyle: DateStyle, timeStyle: DateStyle): Unit
   
   @DoNotStrip
   @Keep

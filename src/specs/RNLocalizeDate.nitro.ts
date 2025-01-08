@@ -15,7 +15,17 @@ export enum DateStyle {
     FULL,
 }
 
+/*
+    The use of this is a temporary workaround for this swift compiler bug: https://github.com/swiftlang/swift/issues/76949
+    A reference to the corresponding issue in Niro is: https://github.com/mrousavy/nitro/issues/459
+
+    After this is fixed it could be removed. And we can just use string[] instead of StringHolder[]
+*/
+export interface StringHolder {
+    value: string
+}
+
 export interface RNLocalizeDateFormatter extends HybridObject<{ ios: 'swift', android: 'kotlin' }> {
-    initialize(defaultLocale: string, supportedLocales: string[], dateStyle: DateStyle, timeStyle: DateStyle): void
+    initialize(defaultLocale: string, supportedLocales: StringHolder[], dateStyle: DateStyle, timeStyle: DateStyle): void
     format(time: number): string
 }

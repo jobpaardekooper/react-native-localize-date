@@ -10,6 +10,8 @@
 // Forward declarations of C++ defined types
 // Forward declaration of `HybridRNLocalizeDateFormatterSpec` to properly resolve imports.
 namespace margelo::nitro::localizedate { class HybridRNLocalizeDateFormatterSpec; }
+// Forward declaration of `StringHolder` to properly resolve imports.
+namespace margelo::nitro::localizedate { struct StringHolder; }
 
 // Forward declarations of Swift defined types
 // Forward declaration of `HybridRNLocalizeDateFormatterSpec_cxx` to properly resolve imports.
@@ -17,6 +19,7 @@ namespace NitroLocalizeDate { class HybridRNLocalizeDateFormatterSpec_cxx; }
 
 // Include C++ defined types
 #include "HybridRNLocalizeDateFormatterSpec.hpp"
+#include "StringHolder.hpp"
 #include <NitroModules/Result.hpp>
 #include <exception>
 #include <memory>
@@ -29,13 +32,13 @@ namespace NitroLocalizeDate { class HybridRNLocalizeDateFormatterSpec_cxx; }
  */
 namespace margelo::nitro::localizedate::bridge::swift {
 
-  // pragma MARK: std::vector<std::string>
+  // pragma MARK: std::vector<StringHolder>
   /**
-   * Specialized version of `std::vector<std::string>`.
+   * Specialized version of `std::vector<StringHolder>`.
    */
-  using std__vector_std__string_ = std::vector<std::string>;
-  inline std::vector<std::string> create_std__vector_std__string_(size_t size) {
-    std::vector<std::string> vector;
+  using std__vector_StringHolder_ = std::vector<StringHolder>;
+  inline std::vector<StringHolder> create_std__vector_StringHolder_(size_t size) {
+    std::vector<StringHolder> vector;
     vector.reserve(size);
     return vector;
   }

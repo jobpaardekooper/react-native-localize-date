@@ -42,8 +42,9 @@ class HybridRNLocalizeDateFormatter : HybridRNLocalizeDateFormatterSpec() {
 
     var formatter: DateFormat? = null
 
-    override fun initialize(defaultLocale: String, supportedLocales: Array<String>, dateStyle: DateStyle, timeStyle: DateStyle): Unit {
-        val userPreferredLocale = getUserPreferredLocale(supportedLocales.toList(), Locale(defaultLocale))
+    override fun initialize(defaultLocale: String, supportedLocales: Array<StringHolder>, dateStyle: DateStyle, timeStyle: DateStyle): Unit {
+        val supportedLocaleStrings = supportedLocales.map { it.value }.toTypedArray()
+        val userPreferredLocale = getUserPreferredLocale(supportedLocaleStrings.toList(), Locale(defaultLocale))
 
         if (dateStyle == DateStyle.NONE && timeStyle != DateStyle.NONE) {
             formatter = DateFormat.getTimeInstance(mapDateStyleToDateFormat(timeStyle), userPreferredLocale)

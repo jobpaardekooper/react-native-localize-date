@@ -14,7 +14,7 @@ public protocol HybridRNLocalizeDateFormatterSpec_protocol: AnyObject {
   
 
   // Methods
-  func initialize(defaultLocale: String, supportedLocales: [String], dateStyle: DateStyle, timeStyle: DateStyle) throws -> Void
+  func initialize(defaultLocale: String, supportedLocales: [StringHolder], dateStyle: DateStyle, timeStyle: DateStyle) throws -> Void
   func format(time: Double) throws -> String
 }
 

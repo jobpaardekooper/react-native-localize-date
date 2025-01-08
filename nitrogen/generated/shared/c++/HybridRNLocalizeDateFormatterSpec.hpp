@@ -13,11 +13,14 @@
 #error NitroModules cannot be found! Are you sure you installed NitroModules properly?
 #endif
 
+// Forward declaration of `StringHolder` to properly resolve imports.
+namespace margelo::nitro::localizedate { struct StringHolder; }
 // Forward declaration of `DateStyle` to properly resolve imports.
 namespace margelo::nitro::localizedate { enum class DateStyle; }
 
 #include <string>
 #include <vector>
+#include "StringHolder.hpp"
 #include "DateStyle.hpp"
 
 namespace margelo::nitro::localizedate {
@@ -51,7 +54,7 @@ namespace margelo::nitro::localizedate {
 
     public:
       // Methods
-      virtual void initialize(const std::string& defaultLocale, const std::vector<std::string>& supportedLocales, DateStyle dateStyle, DateStyle timeStyle) = 0;
+      virtual void initialize(const std::string& defaultLocale, const std::vector<StringHolder>& supportedLocales, DateStyle dateStyle, DateStyle timeStyle) = 0;
       virtual std::string format(double time) = 0;
 
     protected:

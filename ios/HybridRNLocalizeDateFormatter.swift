@@ -15,7 +15,7 @@ func mapDateStyleToDateFormatterStyle(_ style: DateStyle) -> DateFormatter.Style
     }
 }
 
-class HybridRNLocalizeDateFormatter: HybridRNLocalizeDateFormatterSpec {    
+class HybridRNLocalizeDateFormatter: HybridRNLocalizeDateFormatterSpec {
     let dateFormatter = DateFormatter()
     
     func format(time: Double) -> String {
@@ -25,7 +25,7 @@ class HybridRNLocalizeDateFormatter: HybridRNLocalizeDateFormatterSpec {
         return dateFormatter.string(from: date)
     }
     
-    func initialize(defaultLocale: String, supportedLocales: [String], dateStyle: DateStyle, timeStyle: DateStyle) throws -> Void {
+    func initialize(defaultLocale: String, supportedLocales: [StringHolder], dateStyle: DateStyle, timeStyle: DateStyle) throws -> Void {
         dateFormatter.dateStyle = mapDateStyleToDateFormatterStyle(dateStyle)
         dateFormatter.timeStyle = mapDateStyleToDateFormatterStyle(timeStyle)
     }

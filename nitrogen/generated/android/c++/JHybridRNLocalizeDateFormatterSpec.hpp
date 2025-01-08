@@ -51,7 +51,7 @@ namespace margelo::nitro::localizedate {
 
   public:
     // Methods
-    void initialize(const std::string& defaultLocale, const std::vector<std::string>& supportedLocales, DateStyle dateStyle, DateStyle timeStyle) override;
+    void initialize(const std::string& defaultLocale, const std::vector<StringHolder>& supportedLocales, DateStyle dateStyle, DateStyle timeStyle) override;
     std::string format(double time) override;
 
   private:

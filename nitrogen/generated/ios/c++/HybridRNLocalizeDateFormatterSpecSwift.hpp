@@ -12,11 +12,14 @@
 // Forward declaration of `HybridRNLocalizeDateFormatterSpec_cxx` to properly resolve imports.
 namespace NitroLocalizeDate { class HybridRNLocalizeDateFormatterSpec_cxx; }
 
+// Forward declaration of `StringHolder` to properly resolve imports.
+namespace margelo::nitro::localizedate { struct StringHolder; }
 // Forward declaration of `DateStyle` to properly resolve imports.
 namespace margelo::nitro::localizedate { enum class DateStyle; }
 
 #include <string>
 #include <vector>
+#include "StringHolder.hpp"
 #include "DateStyle.hpp"
 
 #include "NitroLocalizeDate-Swift-Cxx-Umbrella.hpp"
@@ -56,7 +59,7 @@ namespace margelo::nitro::localizedate {
 
   public:
     // Methods
-    inline void initialize(const std::string& defaultLocale, const std::vector<std::string>& supportedLocales, DateStyle dateStyle, DateStyle timeStyle) override {
+    inline void initialize(const std::string& defaultLocale, const std::vector<StringHolder>& supportedLocales, DateStyle dateStyle, DateStyle timeStyle) override {
       auto __result = _swiftPart.initialize(defaultLocale, supportedLocales, static_cast<int>(dateStyle), static_cast<int>(timeStyle));
       if (__result.hasError()) [[unlikely]] {
         std::rethrow_exception(__result.error());

@@ -7,11 +7,15 @@
 
 #include "JHybridRNLocalizeDateFormatterSpec.hpp"
 
+// Forward declaration of `StringHolder` to properly resolve imports.
+namespace margelo::nitro::localizedate { struct StringHolder; }
 // Forward declaration of `DateStyle` to properly resolve imports.
 namespace margelo::nitro::localizedate { enum class DateStyle; }
 
 #include <string>
 #include <vector>
+#include "StringHolder.hpp"
+#include "JStringHolder.hpp"
 #include "DateStyle.hpp"
 #include "JDateStyle.hpp"
 
@@ -36,14 +40,14 @@ namespace margelo::nitro::localizedate {
   
 
   // Methods
-  void JHybridRNLocalizeDateFormatterSpec::initialize(const std::string& defaultLocale, const std::vector<std::string>& supportedLocales, DateStyle dateStyle, DateStyle timeStyle) {
-    static const auto method = _javaPart->getClass()->getMethod<void(jni::alias_ref<jni::JString> /* defaultLocale */, jni::alias_ref<jni::JArrayClass<jni::JString>> /* supportedLocales */, jni::alias_ref<JDateStyle> /* dateStyle */, jni::alias_ref<JDateStyle> /* timeStyle */)>("initialize");
+  void JHybridRNLocalizeDateFormatterSpec::initialize(const std::string& defaultLocale, const std::vector<StringHolder>& supportedLocales, DateStyle dateStyle, DateStyle timeStyle) {
+    static const auto method = _javaPart->getClass()->getMethod<void(jni::alias_ref<jni::JString> /* defaultLocale */, jni::alias_ref<jni::JArrayClass<JStringHolder>> /* supportedLocales */, jni::alias_ref<JDateStyle> /* dateStyle */, jni::alias_ref<JDateStyle> /* timeStyle */)>("initialize");
     method(_javaPart, jni::make_jstring(defaultLocale), [&]() {
       size_t __size = supportedLocales.size();
-      jni::local_ref<jni::JArrayClass<jni::JString>> __array = jni::JArrayClass<jni::JString>::newArray(__size);
+      jni::local_ref<jni::JArrayClass<JStringHolder>> __array = jni::JArrayClass<JStringHolder>::newArray(__size);
       for (size_t __i = 0; __i < __size; __i++) {
         const auto& __element = supportedLocales[__i];
-        __array->setElement(__i, *jni::make_jstring(__element));
+        __array->setElement(__i, *JStringHolder::fromCpp(__element));
       }
       return __array;
     }(), JDateStyle::fromCpp(dateStyle), JDateStyle::fromCpp(timeStyle));
