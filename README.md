@@ -11,7 +11,9 @@ The output format is platform-dependent and might, for example, even differ betw
 
 - [Why is this library needed?](#why-is-this-library-needed)
 - [Installation](#installation)
-  - [Required additional iOS steps](#required-additional-ios-steps)
+  - [Required additional iOS setup setps](#required-additional-ios-setup-setps)
+    - [Setup with Expo plugin](#setup-with-expo-plugin)
+    - [Manual iOS plist steps](#manual-ios-plist-steps)
 - [Usage](#usage)
 - [API](#api)
   - [`DateStyle`](#datestyle)
@@ -48,7 +50,39 @@ This library was created using [Nitro Modules](https://github.com/mrousavy/nitro
 
 The library works with both the new and old architectures. React Native version `0.75.x` and above is supported.
 
-### Required additional iOS steps
+### Required additional iOS setup setps
+
+You can use [the Expo plugin](#setup-with-expo-plugin) for this additional setup or do it [manually in a bare React Native project](#manual-ios-plist-steps).
+
+#### Setup with Expo plugin
+
+After you installed the package, add the following to your `app.json` plugins array:
+
+```json
+{
+  "plugins": [
+    [
+      "react-native-localize-date",
+      {
+        "defaultLocale": "en",
+        "supportedLocales": [
+          "en",
+          "fr",
+          "de"
+        ]
+      }
+    ]
+  ]
+}
+```
+
+Now run:
+
+```bash
+npx expo prebuild
+```
+
+#### Manual iOS plist steps
 
 iOS automatically determines the locale that will be used based on the locales that your app claims to support in the `info.plist` file. To make use of this library, you need to add the languages you support (`CFBundleLocalizations`) and a fallback language (`CFBundleDevelopmentRegion`).
 
@@ -113,7 +147,7 @@ Creates a DateFormatter with the options specified in the constructor.
 
 `supportedLocales` is the list of locales that your app supports. It should not be empty and at least the `defaultLocale` should be contained in this array.
 
-`defaultLocale` and `supportedLocales` are both only used on Android. On iOS, `info.plist` properties are automatically used. Please refer to the [iOS installation steps section](#required-additional-ios-steps).
+`defaultLocale` and `supportedLocales` are both only used on Android. On iOS, `info.plist` properties are automatically used. Please refer to the [iOS installation steps section](#required-additional-ios-setup-setps).
 
 `dateStyle` and `timeStyle` can't both be `DateStyle.NONE` at the same time. (This will throw an error)
 
