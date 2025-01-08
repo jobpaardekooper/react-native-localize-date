@@ -9,6 +9,7 @@
   "source": "src/index",
   "files": [
     "src",
+    "plugin",
     "react-native.config.js",
     "lib",
     "nitrogen",
