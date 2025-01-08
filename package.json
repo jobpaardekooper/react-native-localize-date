@@ -36,8 +36,12 @@
     "release": "release-it"
   },
   "keywords": [
+    "react-native-localize-date",
     "react-native",
-    "nitro"
+    "nitro",
+    "localize",
+    "localization",
+    "l20n"
   ],
   "repository": {
     "type": "git",
