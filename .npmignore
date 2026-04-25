@@ -1,0 +1,6 @@
+.claude/
+.git/
+android/build/
+example/
+ios/build/
+node_modules/
