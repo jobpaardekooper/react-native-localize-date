@@ -61,7 +61,6 @@
   "devDependencies": {
     "@react-native/eslint-config": "^0.75.2",
     "@release-it/conventional-changelog": "^8.0.1",
-    "@types/jest": "^29.5.12",
     "@types/react": "^18.3.4",
     "eslint": "^8.57.0",
     "expo-module-scripts": "^4.0.2",
