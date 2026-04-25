@@ -35,7 +35,7 @@
     "typescript": "tsc",
     "specs": "tsc --noEmit && nitrogen --logLevel=\"debug\"",
     "release": "release-it",
-    "build-expo-plugin": "tsc --build /Users/jobpaardekooper/Developer/react-native-localize-date/plugin"
+    "build-expo-plugin": "tsc --build plugin"
   },
   "keywords": [
     "react-native-localize-date",
