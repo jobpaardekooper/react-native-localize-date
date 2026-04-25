@@ -92,6 +92,7 @@
     }
   },
   "eslintIgnore": [
+    "build/",
     "node_modules/",
     "lib/"
   ],
