@@ -5,7 +5,7 @@
   "main": "lib/index",
   "module": "lib/index",
   "types": "lib/index.d.ts",
-  "react-native": "src/index",
+  "react-native": "lib/index",
   "source": "src/index",
   "files": [
     "src",
@@ -33,9 +33,9 @@
     "lint": "eslint \"**/*.{js,ts,tsx}\" --fix",
     "lint-ci": "eslint \"**/*.{js,ts,tsx}\" -f @jamesacarr/github-actions",
     "typescript": "tsc",
-    "specs": "tsc --noEmit && nitro-codegen --logLevel=\"debug\"",
+    "specs": "tsc --noEmit && nitrogen --logLevel=\"debug\"",
     "release": "release-it",
-    "build-expo-plugin": "tsc --build /Users/jobpaardekooper/Developer/react-native-localize-date/plugin"
+    "build-expo-plugin": "tsc --build plugin"
   },
   "keywords": [
     "react-native-localize-date",
@@ -59,23 +59,24 @@
     "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
-    "@react-native/eslint-config": "^0.75.2",
-    "@release-it/conventional-changelog": "^8.0.1",
-    "@types/jest": "^29.5.12",
-    "@types/react": "^18.3.4",
-    "eslint": "^8.57.0",
-    "expo-module-scripts": "^4.0.2",
-    "nitro-codegen": "0.20.1",
-    "react": "^18.3.1",
-    "react-native": "^0.75.2",
-    "react-native-nitro-modules": "0.20.1",
-    "release-it": "^17.2.1",
-    "typescript": "^5.5.4"
+    "@react-native/eslint-config": "^0.85.2",
+    "@release-it/conventional-changelog": "^10.0.6",
+    "@types/react": "^19.1.0",
+    "eslint": "^8.57.1",
+    "eslint-plugin-ft-flow": "^3.0.11",
+    "eslint-plugin-react": "^7.37.5",
+    "expo-module-scripts": "^55.0.0",
+    "nitrogen": "^0.35.5",
+    "react": "^19.1.0",
+    "react-native": "^0.83.6",
+    "react-native-nitro-modules": "^0.35.5",
+    "release-it": "^20.0.1",
+    "typescript": "^5.9.3"
   },
   "peerDependencies": {
     "react": "*",
     "react-native": "*",
-    "react-native-nitro-modules": "^0.20.1"
+    "react-native-nitro-modules": "^0.35.5"
   },
   "eslintConfig": {
     "root": true,
@@ -91,6 +92,7 @@
     }
   },
   "eslintIgnore": [
+    "build/",
     "node_modules/",
     "lib/"
   ],
