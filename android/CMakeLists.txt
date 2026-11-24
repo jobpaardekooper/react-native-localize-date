@@ -1,23 +1,14 @@
-project(NitroLocalizeDate)
-cmake_minimum_required(VERSION 3.9.0)
+cmake_minimum_required(VERSION 3.13)
+project(localizedate)
 
-set (PACKAGE_NAME NitroLocalizeDate)
-set (CMAKE_VERBOSE_MAKEFILE ON)
-set (CMAKE_CXX_STANDARD 20)
+set(PACKAGE_NAME localizedate)
+set(CMAKE_CXX_STANDARD 20)
 
 # Define C++ library and add all sources
-add_library(${PACKAGE_NAME} SHARED
-        src/main/cpp/cpp-adapter.cpp
-)
+add_library(${PACKAGE_NAME} SHARED src/main/cpp/cpp-adapter.cpp)
 
 # Add Nitrogen specs :)
-include(${CMAKE_SOURCE_DIR}/../nitrogen/generated/android/NitroLocalizeDate+autolinking.cmake)
-
-# Set up local includes
-include_directories(
-        "src/main/cpp"
-        "../cpp"
-)
+include(${CMAKE_SOURCE_DIR}/../nitrogen/generated/android/localizedate+autolinking.cmake)
 
 find_library(LOG_LIB log)
 
@@ -25,5 +16,5 @@ find_library(LOG_LIB log)
 target_link_libraries(
         ${PACKAGE_NAME}
         ${LOG_LIB}
-        android                                   # <-- Android core
+        android # <-- Android core
 )

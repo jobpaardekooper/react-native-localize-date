@@ -2,40 +2,46 @@
   "name": "react-native-localize-date",
   "version": "2.1.1",
   "description": "React Native date localization using correct platform specific preferences",
-  "main": "lib/index",
-  "module": "lib/index",
-  "types": "lib/index.d.ts",
-  "react-native": "src/index",
-  "source": "src/index",
+  "main": "./lib/module/index.js",
+  "types": "./lib/typescript/src/index.d.ts",
+  "exports": {
+    ".": {
+      "react-native-localize-date-source": "./src/index.ts",
+      "types": "./lib/typescript/src/index.d.ts",
+      "default": "./lib/module/index.js"
+    },
+    "./app.plugin.js": "./app.plugin.js",
+    "./package.json": "./package.json"
+  },
   "files": [
     "src",
-    "plugin",
-    "react-native.config.js",
     "lib",
+    "android",
+    "ios",
     "nitrogen",
-    "android/build.gradle",
-    "android/gradle.properties",
-    "android/CMakeLists.txt",
-    "android/src",
-    "ios/**/*.h",
-    "ios/**/*.m",
-    "ios/**/*.mm",
-    "ios/**/*.cpp",
-    "ios/**/*.swift",
-    "app.plugin.js",
+    "nitro.json",
     "*.podspec",
-    "README.md"
+    "react-native.config.js",
+    "!ios/build",
+    "!android/build",
+    "!android/gradle",
+    "!android/gradlew",
+    "!android/gradlew.bat",
+    "!android/local.properties",
+    "!**/__tests__",
+    "!**/__fixtures__",
+    "!**/__mocks__",
+    "!**/.*",
+    "app.plugin.js"
   ],
   "scripts": {
-    "postinstall": "tsc || exit 0;",
+    "example": "npm run --workspace=example",
+    "clean": "del-cli lib",
+    "prepare": "npm run nitrogen && bob build",
+    "nitrogen": "nitrogen",
     "typecheck": "tsc --noEmit",
-    "clean": "rm -rf android/build node_modules/**/android/build lib",
-    "lint": "eslint \"**/*.{js,ts,tsx}\" --fix",
-    "lint-ci": "eslint \"**/*.{js,ts,tsx}\" -f @jamesacarr/github-actions",
-    "typescript": "tsc",
-    "specs": "tsc --noEmit && nitro-codegen --logLevel=\"debug\"",
-    "release": "release-it",
-    "build-expo-plugin": "tsc --build /Users/jobpaardekooper/Developer/react-native-localize-date/plugin"
+    "lint": "eslint \"**/*.{js,ts,tsx}\"",
+    "release": "release-it"
   },
   "keywords": [
     "react-native-localize-date",
@@ -59,41 +65,77 @@
     "registry": "https://registry.npmjs.org/"
   },
   "devDependencies": {
-    "@react-native/eslint-config": "^0.75.2",
-    "@release-it/conventional-changelog": "^8.0.1",
-    "@types/jest": "^29.5.12",
-    "@types/react": "^18.3.4",
-    "eslint": "^8.57.0",
-    "expo-module-scripts": "^4.0.2",
-    "nitro-codegen": "0.20.1",
-    "react": "^18.3.1",
-    "react-native": "^0.75.2",
-    "react-native-nitro-modules": "0.20.1",
-    "release-it": "^17.2.1",
-    "typescript": "^5.5.4"
+    "@eslint/compat": "^2.1.1",
+    "@eslint/eslintrc": "^3.3.7",
+    "@eslint/js": "^9.39.5",
+    "@react-native/babel-preset": "0.88.1",
+    "@react-native/eslint-config": "0.88.1",
+    "@release-it/conventional-changelog": "^12.0.2",
+    "@types/react": "^19.2.0",
+    "del-cli": "^8.0.1",
+    "eslint": "^9.39.5",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-ft-flow": "^3.0.11",
+    "eslint-plugin-prettier": "^5.5.7",
+    "expo": "~58.0.26",
+    "nitrogen": "0.37.2",
+    "prettier": "^3.9.10",
+    "react": "19.3.0",
+    "react-native": "0.88.1",
+    "react-native-builder-bob": "^0.44.1",
+    "react-native-nitro-modules": "0.37.2",
+    "release-it": "^21.1.1",
+    "typescript": "^6.0.3"
   },
   "peerDependencies": {
-    "react": "*",
-    "react-native": "*",
-    "react-native-nitro-modules": "^0.20.1"
+    "expo": ">=58.0.0",
+    "react": ">=19.3.0",
+    "react-native": ">=0.88.0",
+    "react-native-nitro-modules": "^0.37.2"
   },
-  "eslintConfig": {
-    "root": true,
-    "extends": [
-      "@react-native"
-    ],
-    "plugins": [],
-    "rules": {
-      "semi": [
-        "error",
-        "never"
+  "workspaces": [
+    "example"
+  ],
+  "packageManager": "npm@11.20.0",
+  "react-native-builder-bob": {
+    "source": "src",
+    "output": "lib",
+    "targets": [
+      [
+        "module",
+        {
+          "esm": true
+        }
+      ],
+      [
+        "typescript",
+        {
+          "project": "tsconfig.build.json"
+        }
       ]
+    ]
+  },
+  "prettier": {
+    "quoteProps": "consistent",
+    "singleQuote": true,
+    "tabWidth": 2,
+    "trailingComma": "es5",
+    "useTabs": false
+  },
+  "create-react-native-library": {
+    "type": "nitro-module",
+    "languages": "kotlin-swift",
+    "tools": [
+      "eslint",
+      "release-it"
+    ],
+    "version": "0.64.0"
+  },
+  "peerDependenciesMeta": {
+    "expo": {
+      "optional": true
     }
   },
-  "eslintIgnore": [
-    "node_modules/",
-    "lib/"
-  ],
   "release-it": {
     "npm": {
       "publish": true

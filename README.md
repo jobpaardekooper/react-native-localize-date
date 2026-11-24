@@ -29,7 +29,7 @@ Localizing date and time based only on a [BCP 47 language tag](https://www.techo
 > For example, on my iPhone with my personal settings, the language tag that an app will receive is `en-US`. Using this tag with [`Intl.DateTimeFormat`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Intl/DateTimeFormat) yields the date format `MM/DD/YYYY`:
 >
 > ```js
-> Intl.DateTimeFormat('en-US').format(new Date())
+> Intl.DateTimeFormat('en-US').format(new Date());
 > // '11/20/2024'
 > ```
 >
@@ -39,16 +39,20 @@ This library solves this issue by providing an API for native platform date to l
 
 ## Installation
 
-Install the library as follows:
+In an Expo project, install the packages with:
 
 ```sh
-npm i react-native-nitro-modules react-native-localize-date
+npx expo install react-native-localize-date react-native-nitro-modules@^0.37.2
+```
+
+In a React Native project without Expo, install the packages and update the iOS pods:
+
+```sh
+npm install react-native-localize-date react-native-nitro-modules@^0.37.2
 cd ios && pod install
 ```
 
 This library was created using [Nitro Modules](https://github.com/mrousavy/nitro), so it is required to install `react-native-nitro-modules` as a peer dependency [(read more)](https://nitro.margelo.com/docs/for-users).
-
-The library works with both the new and old architectures. React Native version `0.75.x` and above is supported.
 
 ### Required additional iOS setup steps
 
@@ -56,23 +60,21 @@ You can use [the Expo plugin](#setup-with-expo-plugin) for this additional setup
 
 #### Setup with Expo plugin
 
-After you installed the package, add the following to your `app.json` plugins array:
+After installing the package, add the plugin to `expo.plugins` in `app.json`.
 
 ```json
 {
-  "plugins": [
-    [
-      "react-native-localize-date",
-      {
-        "defaultLocale": "en",
-        "supportedLocales": [
-          "en",
-          "fr",
-          "de"
-        ]
-      }
+  "expo": {
+    "plugins": [
+      [
+        "react-native-localize-date",
+        {
+          "defaultLocale": "en",
+          "supportedLocales": ["en", "fr", "de"]
+        }
+      ]
     ]
-  ]
+  }
 }
 ```
 
@@ -108,21 +110,23 @@ This is all the setup needed for iOS. If you specifically want to know more abou
 ## Usage
 
 ```typescript
-import {
-  DateStyle,
-  DateFormatter
-} from 'react-native-localize-date'
+import { DateStyle, DateFormatter } from 'react-native-localize-date';
 
-const date = new Date()
-const defaultLocale = 'en'
-const supportedLocales = ['en', 'fr', 'de']
-const shortFormatter = new DateFormatter(defaultLocale, supportedLocales, DateStyle.SHORT, DateStyle.SHORT)
+const date = new Date();
+const defaultLocale = 'en';
+const supportedLocales = ['en', 'fr', 'de'];
+const shortFormatter = new DateFormatter(
+  defaultLocale,
+  supportedLocales,
+  DateStyle.SHORT,
+  DateStyle.SHORT
+);
 
-shortFormatter.format(date)
+shortFormatter.format(date);
 // For example returns: '20/11/2024 16:48'
 ```
 
-This repository also contains a [full example app](example/App.tsx) using all the different options.
+This repository also contains a [full example app](example/src/App.tsx) using all the different options.
 
 ## API
 
@@ -132,12 +136,12 @@ Enum representing the different styles for date and time localization. Each valu
 
 For more information, refer to the corresponding documentation for [iOS](https://developer.apple.com/documentation/foundation/dateformatter/style) and [Android](https://developer.android.com/reference/android/icu/text/DateFormat#:~:text=The%20exact%20result%20depends%20on%20the%20locale%2C%20but%20generally).
 
-| Value
-| -----
-| `SHORT`
-| `MEDIUM`
-| `LONG`
-| `FULL`
+| Value    |
+| -------- |
+| `SHORT`  |
+| `MEDIUM` |
+| `LONG`   |
+| `FULL`   |
 
 ### `new DateFormatter(defaultLocale: string, supportedLocales: string[], dateStyle: DateStyle, timeStyle: DateStyle)`
 
@@ -159,19 +163,27 @@ Returns a localized string for the provided date object according to the styles 
 
 ## Running the example app
 
-There is an example app project located at [example/](example) which you can run as follows:
+The [example app](example) is an npm workspace. Run these commands from the library repository root:
 
 ```sh
-cd example
-npm i
-cd ios && pod install && cd ..
-npx react-native run-ios
+nvm use
+npm ci
+npm run example -- ios
 ```
 
-Or run on Android using `npx react-native run-android`.
+Use `npm run example -- android` for Android. Expo generates the native project and installs a development build on a simulator or device. After the development build is installed, use `npm run example -- start` for subsequent JavaScript changes. Rebuild after changing native code or the config plugin.
 
 ## Contributing
 
 Since this library uses [Nitro Modules](https://github.com/mrousavy/nitro), it's best to familiarize yourself with their docs before trying to contribute.
 
-External contributions are always appreciated *if something needs to be changed*. Please first open an issue to discuss the changes.
+External contributions are always appreciated _if something needs to be changed_. Please first open an issue to discuss the changes.
+
+## Releasing
+
+From the library root, verify the example and commit the release changes. Run `npm run prepare` and `npm pack --dry-run` to review the files that will be published.
+
+```sh
+npm run release -- --dry-run
+npm run release
+```

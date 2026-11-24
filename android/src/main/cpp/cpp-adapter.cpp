@@ -1,6 +1,10 @@
 #include <jni.h>
-#include "NitroLocalizeDateOnLoad.hpp"
+#include "localizedateOnLoad.hpp"
+
+#include <fbjni/fbjni.h>
 
 JNIEXPORT jint JNICALL JNI_OnLoad(JavaVM* vm, void*) {
-  return margelo::nitro::localizedate::initialize(vm);
+  return facebook::jni::initialize(vm, []() {
+    margelo::nitro::localizedate::registerAllNatives();
+  });
 }

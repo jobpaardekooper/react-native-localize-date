@@ -2,7 +2,8 @@ package com.margelo.nitro.localizedate
 
 import android.os.Build
 import android.os.LocaleList
-import com.margelo.nitro.NitroModules
+import androidx.annotation.Keep
+import com.facebook.proguard.annotations.DoNotStrip
 import java.text.DateFormat
 import java.util.Date
 import java.util.Locale
@@ -36,6 +37,8 @@ fun mapDateStyleToDateFormat(style: DateStyle): Int {
     }
 }
 
+@Keep
+@DoNotStrip
 class HybridRNLocalizeDateFormatter : HybridRNLocalizeDateFormatterSpec() {
     override val memorySize: Long
         get() = 0L

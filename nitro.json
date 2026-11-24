@@ -1,16 +1,22 @@
 {
   "cxxNamespace": ["localizedate"],
   "ios": {
-    "iosModuleName": "NitroLocalizeDate"
+    "iosModuleName": "LocalizeDate"
   },
   "android": {
     "androidNamespace": ["localizedate"],
-    "androidCxxLibName": "NitroLocalizeDate"
+    "androidCxxLibName": "localizedate"
   },
   "autolinking": {
     "RNLocalizeDateFormatter": {
-      "swift": "HybridRNLocalizeDateFormatter",
-      "kotlin": "HybridRNLocalizeDateFormatter"
+      "ios": {
+        "language": "swift",
+        "implementationClassName": "HybridRNLocalizeDateFormatter"
+      },
+      "android": {
+        "language": "kotlin",
+        "implementationClassName": "HybridRNLocalizeDateFormatter"
+      }
     }
   },
   "ignorePaths": ["node_modules"]
