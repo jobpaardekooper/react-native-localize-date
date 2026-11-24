@@ -180,7 +180,7 @@ PODS:
   - hermes-engine (260318099.0.5):
     - hermes-engine/Pre-built (= 260318099.0.5)
   - hermes-engine/Pre-built (260318099.0.5)
-  - LocalizeDate (3.0.0):
+  - LocalizeDate (2.1.1):
     - hermes-engine
     - NitroModules
     - RCTRequired
@@ -2386,7 +2386,7 @@ SPEC CHECKSUMS:
   fmt: ba0886e864ebb21d14c98b2e12e164b8002f5b93
   glog: 3cf7cb46f743c4bc758ae3e6d9c15bd1b4cfd6d4
   hermes-engine: 84812cfd4974d62f62521511b2f1826f4edf3544
-  LocalizeDate: ea0298ae4c10bd69c506c15fda6070a9fb092ac3
+  LocalizeDate: 2fe34cb2a7c34cf2d5b63dcfe9570289bcea6125
   NitroModules: f1a11047ebbb0202a7d0033d6e99ad0527d34b00
   RCT-Folly: 82921e585c0400eda46fac1068297aa9dfb035e4
   RCTDeprecation: c62b9b3fbf0d26b76755f3ebd1c913a4fb469dde
